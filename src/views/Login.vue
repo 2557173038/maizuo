@@ -14,7 +14,7 @@
         name="密码"
         label="密码"
         placeholder="无需填写"
-        :rules="[{ message: '请填写密码' }]"
+        :rules="[{ message:'请填写密码' }]"
       />
       <div style="margin: 16px">
         <van-button
