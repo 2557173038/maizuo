@@ -5,7 +5,7 @@
     <img :src="data.imgUrl" alt="">
       </film-swiper-item>
     </film-swiper>
-   
+
     <film-header class="sticky"></film-header>
 
     <router-view></router-view>
@@ -13,29 +13,29 @@
 </template>
 
 <script>
-import filmSwiper from "@/components/films/FilmSwiper.vue";
-import filmSwiperItem from "@/components/films/FilmSwiperItem.vue";
-import axios from "axios";
-import filmHeader from "@/components/films/FimsHeader.vue"
+import filmSwiper from '@/components/films/FilmSwiper.vue'
+import filmSwiperItem from '@/components/films/FilmSwiperItem.vue'
+import axios from 'axios'
+import filmHeader from '@/components/films/FimsHeader.vue'
 export default {
-  data() {
+  data () {
     return {
-      datalist: [],
-    };
+      datalist: []
+    }
   },
-  mounted() {
-    axios.get("/banner.json").then(res=>{
-        // console.log(res.data.banner)
-        this.datalist=res.data.banner
+  mounted () {
+    axios.get('/banner.json').then(res => {
+      // console.log(res.data.banner)
+      this.datalist = res.data.banner
     })
   },
 
   components: {
     filmSwiper,
     filmSwiperItem,
-    filmHeader,
-  },
-};
+    filmHeader
+  }
+}
 </script>
 <style lang="scss" scoped>
 
@@ -47,7 +47,7 @@ export default {
         width: 100%;
         height: 11.6875rem;
     }
-    
+
    }
    .sticky{
       position:sticky;
@@ -55,5 +55,5 @@ export default {
       background-color: white;
       z-index:666;
     }
-  
+
 </style>

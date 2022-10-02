@@ -11,7 +11,6 @@ import Datail from '@/views/Datail.vue'
 import Login from '@/views/Login.vue'
 import City from '@/views/City.vue'
 
-
 Vue.use(VueRouter)// 注册路由插件 ,两个全员组件 router-view  router-link
 // 配置表
 const routes = [
@@ -23,16 +22,16 @@ const routes = [
     children: [
       {
         path: '/films/nowplaying',
-        component: () => import('@/views/films/Nowplaying.vue'), // 路由懒加载
+        component: () => import('@/views/films/Nowplaying.vue') // 路由懒加载
       },
       {
         path: '/films/comingsoon',
-        component: () => import('@/views/films/Comingsoon.vue'), // 路由懒加载
+        component: () => import('@/views/films/Comingsoon.vue') // 路由懒加载
 
       },
       {
         path: '/films',
-        redirect: '/films/nowplaying' //重定向
+        redirect: '/films/nowplaying' // 重定向
 
       }
     ]
@@ -40,11 +39,11 @@ const routes = [
 
   {
     path: '/cinemas',
-    component:Cinemas
+    component: Cinemas
   },
   {
     path: '/city',
-    component:City
+    component: City
   },
   {
     path: '/cinemas/search',
@@ -55,7 +54,7 @@ const routes = [
     component: () => import('@/views/Center.vue'), // 路由懒加载
     meta: {
       is: true
-    },
+    }
     // 局部拦截
     // beforeEach: (to, from, next) => {
     //   //
@@ -63,8 +62,8 @@ const routes = [
   },
   {
     path: '/order',
-    component: () => import('@/views/Order.vue'),
-    
+    component: () => import('@/views/Order.vue')
+
   },
   {
     path: '/login',
@@ -88,22 +87,22 @@ const router = new VueRouter({
 })
 
 // 全局拦截
-router.beforeEach((to,from,next)=>{
+router.beforeEach((to, from, next) => {
 // console.log(to.fullPath)
 
-  if(to.meta.is){
-    //判断 本地存储中是否token
-    if(localStorage.getItem('token')){
+  if (to.meta.is) {
+    // 判断 本地存储中是否token
+    if (localStorage.getItem('token')) {
       next()
-    }else{
+    } else {
       next({
-        path:'/login',
-        query:{redirect:to.fullPath}
+        path: '/login',
+        query: { redirect: to.fullPath }
       })
     }
-  }else{
+  } else {
     next()
   }
- })
+})
 
 export default router

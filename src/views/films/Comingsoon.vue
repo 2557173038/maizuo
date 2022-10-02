@@ -16,30 +16,30 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios'
 export default {
-  data() {
+  data () {
     return {
-      datalist: [],
-    };
+      datalist: []
+    }
   },
-  mounted() {
+  mounted () {
     axios({
-      url: "https://m.maizuo.com/gateway?cityId=110100&pageNum=1&pageSize=10&type=2&k=2126476",
+      url: 'https://m.maizuo.com/gateway?cityId=110100&pageNum=1&pageSize=10&type=2&k=2126476',
       headers: {
-        "X-Client-Info":
+        'X-Client-Info':
           '{"a":"3000","ch":"1002","v":"5.2.1","e":"16595812192273064196767745","bc":"110100"}',
-        "X-Host": "mall.film-ticket.film.list",
-      },
+        'X-Host': 'mall.film-ticket.film.list'
+      }
     }).then((res) => {
-      console.log(res.data.data.films);
-      this.datalist = res.data.data.films;
-    });
+      console.log(res.data.data.films)
+      this.datalist = res.data.data.films
+    })
   },
 
   methods: {
     // 编程式导航
-    handleChangePage(id) {
+    handleChangePage (id) {
       // location.href="#/datail"
       // console.log(id)
       // 通过路径跳转
@@ -47,14 +47,14 @@ export default {
       // 通过命名路由跳转
       console.log(id)
       this.$router.push({
-        name: "kerwinDatail",
+        name: 'kerwinDatail',
         params: {
           id
-        },
-      });
-    },
-  },
-};
+        }
+      })
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -71,7 +71,7 @@ ul {
       width: 4.125rem;
       float: left;
     }
-    .box {      
+    .box {
       div {
         font-size: 16px;
         padding-top: 10px;

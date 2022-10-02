@@ -28,32 +28,31 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      value: "",
-    };
-  },
-  computed: {
-    computedList(){
-        return this.$store.state.cinemaList.filter(item=>item.name.toUpperCase().includes(this.value.toUpperCase())||item.address.
-        toUpperCase().includes(this.value.toUpperCase()))  
-      }
-  },
-  methods: {
-    onSearch() {},
-    onCancel() {
-        this.$router.back()
-    },
-  },
-  mounted() {
-    if (this.$store.state.cinemaList.length === 0) {
-      this.$store.dispatch("getCinemaData", this.$store.state.cityId);
-      //   console.log("数据完事了")
+      value: ''
     }
   },
-};
+  computed: {
+    computedList () {
+      return this.$store.state.cinemaList.filter(item => item.name.toUpperCase().includes(this.value.toUpperCase()) || item.address
+        .toUpperCase().includes(this.value.toUpperCase()))
+    }
+  },
+  methods: {
+    onSearch () {},
+    onCancel () {
+      this.$router.back()
+    }
+  },
+  mounted () {
+    if (this.$store.state.cinemaList.length === 0) {
+      this.$store.dispatch('getCinemaData', this.$store.state.cityId)
+      //   console.log("数据完事了")
+    }
+  }
+}
 </script>
-
 
 <style lang="scss" scoped>
 li {
@@ -90,5 +89,3 @@ li {
   position: relative; //修正滚动条的位置
 }
 </style>
-    
-    

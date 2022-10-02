@@ -3,30 +3,30 @@
     <tabbar ref="mytabbar" class="footer" v-show="$store.state.isTabbarShow"></tabbar>
     <!-- 路由容器 -->
     <router-view></router-view>
-    
+
   </div>
 </template>
 
 <script>
-import Tabbar from "@/components/Tabbar.vue";
-import Vue from "vue";
-import Vant from "vant";
-import "vant/lib/index.css";
+import Tabbar from '@/components/Tabbar.vue'
+import Vue from 'vue'
+import Vant from 'vant'
+import 'vant/lib/index.css'
 
 Vue.use(Vant)
 export default {
   components: {
-    Tabbar,
+    Tabbar
   },
-  data() {
-    return {};
+  data () {
+    return {}
   },
 
-  mounted() {
+  mounted () {
     // console.log(this.$refs.mytabbar.$el.offsetHeight)
   },
-  methods: {},
-};
+  methods: {}
+}
 </script>
 
 <style lang="scss">

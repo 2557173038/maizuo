@@ -33,96 +33,95 @@
 <!-- ****************************************************DOM结构结束 -->
 <script>
 
-import BetterScroll from "better-scroll"
-import {mapState,mapActions,mapMutations} from 'vuex'
+import BetterScroll from 'better-scroll'
+import { mapState, mapActions, mapMutations } from 'vuex'
 // import datalist from "@/components/cinemas/datalist.vue"
 // console.log(mapState(["cinemaList"]))
 export default {
-  data() {
+  data () {
     return {
       // cinemaList: [],
-      height: "0px",
-    };
+      height: '0px'
+    }
   },
-  computed:{
-    ...mapState(["cinemaList",'cityId','cityName']),//vuex新写法
+  computed: {
+    ...mapState(['cinemaList', 'cityId', 'cityName'])// vuex新写法
   },
   methods: {
-    ...mapActions(["getCinemaData"]),
-    ...mapMutations(["clearCinema"]),
+    ...mapActions(['getCinemaData']),
+    ...mapMutations(['clearCinema']),
 
-    handleLeft() {
+    handleLeft () {
       // console.log('left')
-      this.$router.push("/city");
-      //清空cinemas
+      this.$router.push('/city')
+      // 清空cinemas
       this.clearCinema()
     },
-    handleRight(){
-      this.$router.push('/cinemas/search');
-
+    handleRight () {
+      this.$router.push('/cinemas/search')
     }
   },
 
-  mounted() {
+  mounted () {
     // console.log(this.$store.state.cinemaList);
     // console.log(this.$refs.navbar.$el)
-    //动态计算高度
+    // 动态计算高度
     this.height =
       document.documentElement.clientHeight -
-      document.querySelector(".footer").offsetHeight -
+      document.querySelector('.footer').offsetHeight -
       this.$refs.navbar.$el.offsetHeight +
-      "px";
+      'px'
     // console.log(document.documentElement.clientHeight)
     // console.log(document.querySelector(".footer").offsetHeight)
 
-    //分发
-   if(this.cinemaList.length===0){
-    this.getCinemaData(this.cityId).then(res=>{
+    // 分发
+    if (this.cinemaList.length === 0) {
+      this.getCinemaData(this.cityId).then(res => {
       // console.log("数据完事了")
-      this.$nextTick(() => {
-          new BetterScroll(".box", {
-            scrollbar: {
-              fade: true,
-            },
-          });
-         });
-    })
-   }else{
-    // console.log("缓存")
-    this.$store.actions
         this.$nextTick(() => {
-          new BetterScroll(".box", {
+          new BetterScroll('.box', {
             scrollbar: {
-              fade: true,
-            },
-          });
-         });
-        }
-  },
+              fade: true
+            }
+          })
+        })
+      })
+    } else {
+    // console.log("缓存")
+      this.$store.actions
+      this.$nextTick(() => {
+        new BetterScroll('.box', {
+          scrollbar: {
+            fade: true
+          }
+        })
+      })
+    }
+  }
 
-   }
+}
 
-    // http({
-    //   url: `gateway?cityId=${this.$store.state.cityId}&ticketFlag=1&k=6138536`,
-    //   headers: {
-    //     "X-Host": " mall.film-ticket.cinema.list",
-    //   },
-    // }).then((res) => {
-    //   // console.log(res.data.data.cinemas);
-    //   this.cinemaList = res.data.data.cinemas;
+// http({
+//   url: `gateway?cityId=${this.$store.state.cityId}&ticketFlag=1&k=6138536`,
+//   headers: {
+//     "X-Host": " mall.film-ticket.cinema.list",
+//   },
+// }).then((res) => {
+//   // console.log(res.data.data.cinemas);
+//   this.cinemaList = res.data.data.cinemas;
 
-    //   //优化滚动
-    //     this.$nextTick(() => {
-    //       //等dom创建完成再执行
-    //       console.log(document.getElementsByClassName("li").length);
-    //       new BetterScroll(".box", {
-    //         scrollbar: {
-    //           fade: true,
-    //         },
-    //       });
-    //      });
-    //   });
-  // },
+//   //优化滚动
+//     this.$nextTick(() => {
+//       //等dom创建完成再执行
+//       console.log(document.getElementsByClassName("li").length);
+//       new BetterScroll(".box", {
+//         scrollbar: {
+//           fade: true,
+//         },
+//       });
+//      });
+//   });
+// },
 // };
 </script>
 <!-- **************************** ******************-->
@@ -163,4 +162,3 @@ li {
   margin-bottom: 3.0625rem;
 }
 </style>
-

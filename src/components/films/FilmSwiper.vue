@@ -10,27 +10,26 @@
 import Swiper from 'swiper'
 import 'swiper/css'
 export default {
-  props:{
-    loop:{
-      type:Boolean,
-      default:true
+  props: {
+    loop: {
+      type: Boolean,
+      default: true
     }
   },
-  mounted() {
+  mounted () {
     // console.log("mounted")
-    new Swiper(".kerwin", {
+    new Swiper('.kerwin', {
       // direction:"vertical", //垂直
       // 如果需要分页器
       pagination: {
-        el: ".swiper-pagination",
+        el: '.swiper-pagination'
       },
       loop: this.loop,
       autoplay: {
         delay: 2500,
-        disableOnInteraction: false,
-      },
-    });
-  },
-};
+        disableOnInteraction: false
+      }
+    })
+  }
+}
 </script>
-

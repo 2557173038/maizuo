@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import "../assets/iconfont/iconfont.css";
-export default {};
+import '../assets/iconfont/iconfont.css'
+export default {}
 </script>
 <style lang="scss" scoped>
 ul {

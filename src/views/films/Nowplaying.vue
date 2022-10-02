@@ -32,78 +32,78 @@
       </div>
     </van-cell>
   </van-list>
-</template>  
+</template>
 <script>
-import FimsHeader from "@/components/films/FimsHeader.vue";
-import http from "@/util/http.js";
+import FimsHeader from '@/components/films/FimsHeader.vue'
+import http from '@/util/http.js'
 export default {
-  data() {
+  data () {
     return {
       datalist: [],
       dataurl: [],
       loading: false,
       finished: false,
       current: 1,
-      tatal: 0,
+      tatal: 0
       // num:1,
-    };
+    }
   },
   methods: {
     // 编程式导航
-    handleChangePage(id) {
+    handleChangePage (id) {
       // location.href="#/datail"
       // console.log(id)
       // 通过路径跳转
       // this.$router.push(`/datail/${id}`)
       // 通过命名路由跳转
-      console.log(id);
+      console.log(id)
       this.$router.push({
-        name: "kerwinDatail",
+        name: 'kerwinDatail',
         params: {
-          id,
-        },
-      });
+          id
+        }
+      })
     },
 
-    //懒加载处理
-    onLoad() {
+    // 懒加载处理
+    onLoad () {
       // console.log("到底了");
       if (this.datalist.length === this.total && this.total !== 0) {
-        this.finished = true;
-        return;
+        this.finished = true
+        return
       }
 
-      this.current++;
+      this.current++
       http({
         url: `gateway?cityId=${this.$store.state.cityId}&pageNum=${this.current}&pageSize=10&type=1&k=3496314`,
         headers: {
-          "X-Host": "mall.film-ticket.film.list",
-        },
+          'X-Host': 'mall.film-ticket.film.list'
+        }
       }).then((res) => {
-        console.log(res.data.data.films);
-        this.datalist = [...this.datalist, ...res.data.data.films];
-        this.loading = false;
-        console.log(this.datalist.length);
-      });
-    },
+        console.log(res.data.data.films)
+        this.datalist = [...this.datalist, ...res.data.data.films]
+        this.loading = false
+        console.log(this.datalist.length)
+      })
+    }
   },
-  mounted() {
+  mounted () {
     // console.log(this.datalist.nation)
     http({
       url: `gateway?cityId=${this.$store.state.cityId}&pageNum=1&pageSize=10&type=1&k=3496314`,
       headers: {
-        "X-Host": "mall.film-ticket.film.list",
-      },
+        'X-Host': 'mall.film-ticket.film.list'
+      }
     }).then((res) => {
-      console.log(res.data.data.films);
-      this.datalist = res.data.data.films;
-      this.total = res.data.data.total;
+      console.log(res.data.data.films)
+      this.datalist = res.data.data.films
+      this.total = res.data.data.total
 
       // console.log(this.datalist[0].actors);
-    });
+    })
   },
-  components: { FimsHeader },
-};
+  components: { FimsHeader }
+}
 </script>
 <style lang="scss" scoped>
 .van-list {

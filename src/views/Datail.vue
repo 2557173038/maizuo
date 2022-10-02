@@ -74,90 +74,89 @@
 </template>
 <!-- ****************************************************************DOM -->
 <script>
-import Vue from "vue";
-import moment from "moment";
-import datailSwiper from "@/components/datail/DatailSwiper.vue";
-import datailSwiperItem from "@/components/datail/DatailSwiperItem.vue";
-import datailHeader from "@/components/datail/DatailHeader.vue";
-import { ImagePreview } from 'vant';
-import obj from "@/util/mixinsObj"
+import Vue from 'vue'
+import moment from 'moment'
+import datailSwiper from '@/components/datail/DatailSwiper.vue'
+import datailSwiperItem from '@/components/datail/DatailSwiperItem.vue'
+import datailHeader from '@/components/datail/DatailHeader.vue'
+import { ImagePreview } from 'vant'
+import obj from '@/util/mixinsObj'
+import http from '@/util/http'
 
 // console.log(moment().format("YYYY-MM-DD"));
-//过滤器
-Vue.filter("premiereAt", (data) => {
-  return moment(data * 1000).format("YYYY-MM-DD");
-});
-//指令
-Vue.directive("scroll", {
-  inserted(el,binding) {
+// 过滤器
+Vue.filter('premiereAt', (data) => {
+  return moment(data * 1000).format('YYYY-MM-DD')
+})
+// 指令
+Vue.directive('scroll', {
+  inserted (el, binding) {
     // console.log(el)
-    el.style.display = "none";
+    el.style.display = 'none'
     window.onscroll = () => {
       // console.log("scroll")
-      //判断滚动距离  是否需要显示
+      // 判断滚动距离  是否需要显示
       if (document.documentElement.scrollTop || document.body.scrollTop > binding.value) {
-        el.style.display = "block";
+        el.style.display = 'block'
       } else {
-        el.style.display = "none";
+        el.style.display = 'none'
       }
-    };
+    }
   },
-  //消除生命周期
-  unbind(){
-    window.onscroll=null
+  // 消除生命周期
+  unbind () {
+    window.onscroll = null
   }
-});
-import http from "@/util/http";
+})
 export default {
-  mixins:[obj],//混入
+  mixins: [obj], // 混入
 
-  data() {
+  data () {
     return {
       datalist: null,
-      isHidden: true,
-    };
+      isHidden: true
+    }
   },
   components: {
     datailSwiper,
     datailSwiperItem,
-    datailHeader,
+    datailHeader
   },
-  methods:{
-    handlePreview(index){
+  methods: {
+    handlePreview (index) {
       ImagePreview({
-        images:this.datalist.photos,
-        startPosition:index,
-        closeable:true,
-        closeIconPosition:"top-left"
-      });
+        images: this.datalist.photos,
+        startPosition: index,
+        closeable: true,
+        closeIconPosition: 'top-left'
+      })
     }
   },
-  mounted() {
+  mounted () {
     this.$store.commit('hide')
-  
+
     // console.log("mounted", this.$route.params.id);
 
     // axios 利用id发送请求到详情接口，获取详细数据，布局页面
     http({
       url: `gateway?filmId=${this.$route.params.id}&k=7881107`,
       headers: {
-        "X-Host": "mall.film-ticket.film.info",
-      },
+        'X-Host': 'mall.film-ticket.film.info'
+      }
     }).then((res) => {
       // console.log(res.data.data.film);
-      this.datalist = res.data.data.film;
-    });
+      this.datalist = res.data.data.film
+    })
 
-    //清空toast
+    // 清空toast
   },
 
-  //清除生命周期
-  destroyed() {
-    window.onscroll = null;
+  // 清除生命周期
+  destroyed () {
+    window.onscroll = null
     this.$store.commit('show')
-
-  },
-};
+  }
+}
 // ******************************************************************
 </script>
 <style lang="scss" scoped>

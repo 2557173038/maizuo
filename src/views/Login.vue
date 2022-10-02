@@ -32,28 +32,28 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      username: "",
-      password: "",
-    };
+      username: '',
+      password: ''
+    }
   },
   methods: {
-    onSubmit(values) {
+    onSubmit (values) {
       // console.log('submit', values);
     },
-    handleLogin() {
+    handleLogin () {
       setTimeout(() => {
-        localStorage.setItem("token", "后端返回的token字段");
+        localStorage.setItem('token', '后端返回的token字段')
         //    this.$route.back()//返回
 
         // 获取 query字段
 
         // 跳转到当时想要跳的页面去
-        console.log(this.$route.query.redirect);
-        this.$router.push(this.$route.query.redirect);
-      }, 1000);
-    },
-  },
-};
+        console.log(this.$route.query.redirect)
+        this.$router.push(this.$route.query.redirect)
+      }, 1000)
+    }
+  }
+}
 </script>

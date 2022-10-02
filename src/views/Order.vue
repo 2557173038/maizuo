@@ -1,6 +1,6 @@
 <template>
     <div>
-      
+
       <!-- <div>
         <input type="text" placeholder="用户名">
         <input type="text" placeholder="无需输入">
@@ -18,37 +18,35 @@
 export default {
   // mixins:[obj],//混入
 
-  data() {
+  data () {
     return {
       currentRate: 0,
-      rate:0,
-    };
+      rate: 0
+    }
   },
 
-
-  methods:{
-    btn(){
+  methods: {
+    btn () {
       setInterval(() => {
-      this.rate+=1
-      
-    }, 40);
+        this.rate += 1
+      }, 40)
 
-    setTimeout(() => {
-        this.$router.push("/center")
-    }, 4050);
+      setTimeout(() => {
+        this.$router.push('/center')
+      }, 4050)
     }
   },
   computed: {
-    text() {
-      return this.currentRate.toFixed() + '%';
-    },
-  },
+    text () {
+      return this.currentRate.toFixed() + '%'
+    }
+  }
 
 }
 </script>
 
 <style lang="scss" scoped>
- 
+
  .yuan{
     position: absolute;
     top: calc(50% - 4.6875rem);

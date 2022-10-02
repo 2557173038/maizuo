@@ -8,18 +8,18 @@
 
 <script>
 export default {
-    props:{
-      name:{
-        type:String,
-        default:''
-      }
-    },
-
-    methods:{
-        handleBack(){
-            this.$router.back()//返回上一个页面
-        }
+  props: {
+    name: {
+      type: String,
+      default: ''
     }
+  },
+
+  methods: {
+    handleBack () {
+      this.$router.back()// 返回上一个页面
+    }
+  }
 }
 </script>
 
@@ -40,7 +40,7 @@ export default {
         left: 10px;
         top: 0;
     }
-   
+
 }
 
 </style>
