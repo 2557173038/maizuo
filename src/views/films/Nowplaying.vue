@@ -124,6 +124,7 @@ export default {
       float: left;
     }
     .box {
+      margin-left: 4.875rem;
       .hidden {
         visibility: hidden;
       }
