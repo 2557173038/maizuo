@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            border: 20px solid rgb(49, 48, 48);
+            border-radius: 50%;
+            margin: 100px auto;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            width: 300px;
+            flex: 1.2;
+            display: flex;
+            box-sizing: border-box;
+
+        }
+
+        main {
+            width: 300px;
+            flex: 3;
+            border-top: 3px solid;
+            border-bottom: 3px solid;
+            position: relative;
+
+
+        }
+
+        footer {
+            width: 300px;
+            flex: 1.2;
+            display: flex;
+            box-sizing: border-box;
+        }
+
+        header .left {
+            flex: 1.3;
+            border-right: 3px solid;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            position: relative;
+
+        }
+
+        header .right {
+            flex: 2;
+            position: relative;
+        }
+
+        footer .left {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        footer .right {
+            flex: 1.3;
+            position: relative;
+        }
+
+        footer .left .top {
+            flex: 1;
+            border-right: 3px solid;
+            padding-top: 10px;
+
+        }
+
+        footer .left .bottom {
+            width: 45%;
+            flex: 1;
+            border-left: 3px solid;
+            border-top: 3px solid;
+        }
+
+        header .left .huojian {
+            font-size: 40px;
+            color: black;
+            margin-top: 10px;
+            /* background-color: aqua; */
+        }
+
+        header .left .baifenbi {
+            font-size: 23px;
+            color: black;
+            margin-right: 10px;
+            position: absolute;
+            top: 39px;
+
+        }
+
+        header .right p {
+            font-size: 12px;
+            margin: 5px 10px;
+        }
+
+        header .right p span {
+            font-size: 8px;
+
+        }
+
+        header .right .icon-taiyang {
+            position: absolute;
+            font-size: 40px;
+            top: 27px;
+            left: 82px;
+        }
+
+        main .maintop {
+            height: 65px;
+            /* background-color: aqua; */
+            text-align: center;
+            position: relative;
+        }
+
+        .maintop .time {
+            margin: auto;
+            font-size: 45px;
+        }
+
+        .time+span {
+            font-size: 30px;
+            position: absolute;
+            top: 16px;
+            left: 214px;
+        }
+
+        main .today {
+            width: 70px;
+            height: 50px;
+            position: absolute;
+            top: 64px;
+            right: 2px;
+            /* background-color: aqua; */
+        }
+
+        main .taikon {
+            width: 80px;
+            height: 80px;
+            /* background-color: yellow; */
+            position: absolute;
+            top: 60px;
+            left: 115px;
+            transform: rotate(-30deg);
+            animation: time 0.5s infinite ease-in alternate;
+
+        }
+
+        .taikon .icon-yuhangyuan {
+            font-size: 80px;
+
+        }
+
+        main .bushu {
+            width: 100px;
+            height: 40px;
+            /* background-color: aqua; */
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+        }
+
+        .bushu .icon-bushu {
+            font-size: 30px;
+        }
+
+        main .xinlv {
+            width: 100px;
+            height: 30px;
+            position: absolute;
+            bottom: -5px;
+            left: 30px;
+            font-size: 20px;
+            padding-left: 5px;
+        }
+
+        .xinlv .icon-heart-rate-full {
+            font-size: 20px;
+            animation: xinlv 1s infinite ease-in alternate;
+
+        }
+
+        footer .left .top span {
+            margin-left: 20px;
+            font-weight: 550;
+
+        }
+
+        footer .left .top .dateTime {
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        footer .right .juli {
+            height: 30px;
+            font-size: 20px;
+            text-align: left;
+            line-height: 30px;
+            /* background-color: aqua; */
+            margin-top: 5px;
+            margin-left: 5px;
+            font-weight: 500
+        }
+
+        footer .right .juli+div {
+            position: absolute;
+            left: -67px;
+            bottom: 1px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        @keyframes time {
+            0% {
+                transform: rotate(-25deg);
+            }
+
+            100% {
+                transform: rotate(-35deg);
+
+            }
+
+        }
+
+        @keyframes xinlv {
+            0% {
+                font-size: 20px;
+
+            }
+
+            100% {
+                font-size: 23px;
+            }
+
+        }
+    </style>
+    <link rel="stylesheet" href="太空人手表/font_3649408_8b42ddcxfbf/iconfont.css">
+</head>
+
+<body>
+    <div class="box">
+
+        <header>
+            <div class="left">
+                <span class="iconfont icon-xiaohuojian huojian"></span>
+                <span class="baifenbi">99%</span>
+            </div>
+            <div class="right">
+                <p>空气优质</p>
+                <p>晴天&nbsp;&nbsp;&nbsp;26°<span class="iconfont icon-triangle"></span></p>
+                <p>25℃&nbsp;&nbsp;&nbsp;20°<span class="iconfont icon-xiangxiasanjiaoxing"></span></p>
+                <span class="iconfont icon-taiyang"></span>
+            </div>
+        </header>
+
+        <main>
+            <div class="maintop">
+                <div class="time"></div>
+                <span></span>
+            </div>
+
+            <div class="today"></div>
+
+            <div class="taikon">
+                <span class="iconfont icon-yuhangyuan"></span>
+            </div>
+
+            <div class="bushu">
+                <span class="iconfont icon-bushu"></span>
+                4520
+            </div>
+
+            <div class="xinlv"><span class="iconfont icon-heart-rate-full"></span>&nbsp;<span>98</span></div>
+        </main>
+
+        <footer>
+            <div class="left">
+                <div class="top"><span>睡眠</span><span class="dateTime">7h30m</span></div>
+                <div class="bottom"></div>
+            </div>
+            <div class="right">
+                <p class="juli">距离</p>
+                <div>5.20km</div>
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script>
+
+        let timeHours = document.querySelector(".maintop .time")
+        let timeSec = document.querySelector(".maintop .time+span")
+
+
+
+        function settime() {
+
+            let date = new Date()
+            let hours = date.getHours()
+            let min = date.getMinutes()
+            let sec = date.getSeconds()
+            let day = date.getDay()
+            let month = date.getMonth() + 1
+            let date1 = date.getDate()
+
+
+            if (min < 10) {
+                timeHours.innerHTML = hours + ":" + "0" + min
+                timeSec.innerHTML = sec
+            }
+            else if (sec < 10) {
+                timeHours.innerHTML = hours + ":" + min
+                timeSec.innerHTML = "0" + sec
+            }
+            else if (min < 10 & sec < 10) {
+                timeHours.innerHTML = hours + ":" + "0" + min
+                timeSec.innerHTML = "0" + sec
+            }
+            else {
+                timeHours.innerHTML = hours + ":" + min
+                timeSec.innerHTML = sec
+            }
+
+            setDay(month, date1, day)
+        }
+
+        function setDay(month, date1, day) {
+            console.log(month, date1, day)
+
+            let today = document.querySelector("main .today")
+            today.innerHTML = month + "/" + date1 + "<br>星期" + day
+        }
+
+
+        setInterval(settime, 1000)
+    </script>
+</body>
+
+</html>
